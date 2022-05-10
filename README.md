@@ -64,4 +64,4 @@ HTML全称为Hyper Text Markup Language,译为超文本标记语言。<br/>
 * **span标签**：范围、跨度。和div的作用一致，但是不换行。
 #### 内容居中标签`<center>`
 此时，center代表一个标签，而不是属性值。只要在这个标签里的内容，都会居于浏览器的中间。<br />
-![1](https://user-images.githubusercontent.com/66710812/167578459-0f751a6b-1866-4a2d-acc3-30f4740e0e9e.png)
+![1](https://user-images.githubusercontent.com/66710812/167578459-0f751a6b-1866-4a2d-acc3-30f4740e0e9e.png width="60%")
