@@ -29,3 +29,22 @@ HTML全称为Hyper Text Markup Language,译为超文本标记语言。超文本�
 * `<meta>`：提供有关网页的基本信息。
 * `<body>`：用于定义HTML文档所要显示的内容，也称为主体标签。我们所写的代码必须放在此标签内。
 * `<link>`：定义文档与外部资源的关系。
+##### 编写XHTML的规范
+* 所有标记的元素都要正确的嵌套，不能交叉嵌套。正确写法举例：`<h1><font></font></h1>`
+* 所有的标记都必须小写。
+* 所有的标签都必须闭合。
+	*双标签：`<span></span>`
+	*单标签：`<br>`建议写成`<br/>``<hr>`建议写成`<hr/>`，还有`<img src="URL"/>`
+* 所有的属性值都必须加引号。`<font color="red"></font>`
+* 搜有的属性都必须有值。`<hr noshade="noshade">`、`<input type="radio" checked="checked"/>`
+* XHTML文档开头必须有DTD文档类型定义。
+### HTML排版标签
+##### 标题标签
+使用`<h1>`到`<h6>`标签进行定义。具有align属性，属性值可以是：left\center\right。
+##### HTML注释
+`<!-- 我是html注释 -->`
+##### 段落标签`<p>`
+段落，是英语"paragraph"的缩写。属性`align="属性值"`：对齐方式。属性值包括left center right。
+##### HTML标签等级
+* **文本级标签**：`p``span``a``b``i``u``em`。文本级标签里只能放**文字、图片、表单元素**。（a标签里不能放a和input）
+* **容器级标签**：`div``h``li``dt``dd`。容器级标签里可以放任何东西。
