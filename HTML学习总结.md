@@ -113,3 +113,21 @@ a是英文"anchor"，“锚”的意思；href(hypertext reference),“超文本
 	`<img src="1.jpg" />`
 	`<a href="1.html"></a>`
 * a是一个文本级标签
+### img标签简介
+#### 插入图片的方式
+* 图片的相对路径
+两个标记`.`和`..`分别表示当前目录和上一层目录。注意：`..`要么不写，要么写在开头。相对路径的好处：站点不管拷贝到哪里，文件和图片的相对路径关系都是不变的。相对路径使用有一个前提，就是网页文件和图片必须在一个服务器上。
+* 图片的绝对路径
+	* 以盘符开始的绝对路径
+	`<img src="C:\Users\qianguyihao\Desktop\html\images\1.jpg">`
+	* 网络路径
+	`<img src="http://img.smyhvae.com/20200122_200901.png">`
+#### img标签的其他属性
+* width、height属性
+width和height，在HTML5中的单位是CSS像素，在HTML4中既可以是像素，也可以是百分比。可以只指定width和height中的一个值，浏览器会根据原始图像进行缩放。
+* Alt属性
+当图片不能正常显示的时候，代替图片显示的内容。alt是alternate“替代”的意思，表示替换资源。
+* title属性
+提示性文本，鼠标悬停时出现的文本。
+* align属性
+图片和周围文字的相对位置。属性取值可以是：bottom（默认）、center、top、left、right。默认情况下，文字在图片的底部。
