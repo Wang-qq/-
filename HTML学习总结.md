@@ -235,7 +235,8 @@ text就是“文本”，area就是“区域”
 * `cols="20"`：指定文本区域的列数
 * `readonly`：只读
 #### 表单的语义化
-`<form>
+````
+<form>
         <fieldset>
             <legend>账号信息</legend>
             姓名：<input value="刘亦菲"><br/> 密码：
@@ -249,7 +250,8 @@ text就是“文本”，area就是“区域”
             <input type="checkbox" name="love" value="sleep">睡觉
             <input type="checkbox" name="love" value="study">学习
         </fieldset>
-    </form>`
+</form>
+````
 效果图如下：
 ![1](https://user-images.githubusercontent.com/66710812/168278178-3e72897a-d642-4e31-9a1f-ac19bfdb233f.jpg)
 ### 多媒体标签
