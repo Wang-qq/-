@@ -183,9 +183,74 @@ width和height，在HTML5中的单位是CSS像素，在HTML4中既可以是像�
 	* `colspan`：横向合并。例如`colspan="2"`表示当前单元格在水平方向上要占据两个单元格的位置
 	* `rowspan`：纵向合并。例如`rowspan="2"`表示当前单元格在垂直方向上要占据两个单元格的位置
 * `<th>`：加粗的单元格
-相当于<td>+<b>,属性同<td>
-
+相当于`<td>`+`<b>`,属性同`<td>`
+* `<caption>`：表格的标题
+	* 使用时和`<tr>`标签并列
+	* 属性：`align`，表示标题相对于表格的位置。属性值可以是：left center right top bottom
+* `<thead> <tbody> <tfoot>`标签
+	* 如果写了这三个标签，那么这三个部分**代码顺序可以任意**，浏览器显示的时候还是按照thead、tbody、tffot的顺序依次来显示内容。如果不写thead、tbody、tfoot，那么浏览器解析并显示表格内容的时候是按照代码从上到下的顺序来显示
+	* 当表格的内容非常大的时候，如果用了这三个标签，那么**数据可以边获取边显示**。如果不写，则必须等表格的全部内容从服务器获取完成才能显示出来。
 ### 框架标签及内嵌框架`<iframe>`
+一个网页中显示多个页面。之前没用到，先不介绍了。
 ### 表单标签`<form>`
+表单标签用于与服务器交互。表单就是收集用户信息的，就是让用户填写、选择的。
+* 属性
+	* `name`：表单的名称，用于js来操作或控制表单时使用
+	* `id`：表单的名称，用于js来操作或控制表单时使用
+	* `action`：指定表单数据的处理程序，一般是PHP，如：action="login.php",表单将提交到哪里
+	* `method`：表单数据的提交方式，一般取值：get（默认）和post，表示用什么http方法提交，**两种提交方式的区别如下：**
+		* GET方式：将表单数据以"name=value"的形式追加到action指定的处理程序后面，两者间用"?"隔开，每一个表单的"name=value"间用'&"隔开。**特点**：只适合提交少量信息，并且不太安全（不要提交敏感数据）、提交的数据类型只限于ASCII字符。
+		* POST方式：将表单数据直接发送（隐藏）到action指定的处理程序。POST发送的数据不可见。action指定的处理程序可以获取到表单数据。**特点**：可以提交海量信息，相对来说安全一些，提交的数据格式时多样的(word、excel、rar、img)。
+#### `<input>`输入标签（文本框）
+用于接收用户输入。
+`<input type="text">`
+**属性**
+* `type="属性值"`:文本类型。属性值可以是：
+	* `text`:默认
+	* `password`:密码类型
+	* `radio`：单选按钮，名字相同的按钮作为一组进行单选，天生不互斥，如果想互斥，必须有相同的name属性。在多个单选框的input标签中，name的属性值可疑相同，但是**id的属性值必须是唯一的**
+	* `checkbox`:多选按钮，name属性值相同的按钮作为一组进行选择
+	* `checked`：将多选按钮或单选按钮默认处于选中状态。当`<input>`标签设置为`type="radio"`或者`type="checkbox"`属性时，可以使用这个属性。属性值也是checked，可以省略。
+	* `hidden`：隐藏框，在表单中包含不希望用户看见的信息
+	* `button`：普通按钮，结合js代码一起服用，效果更佳
+	* `submit`:提交按钮，传送当前表单的数据给服务器或者其他的程序处理。这个按钮不需要写value就会自动有“提交”文字。真的有提交功能，点击按钮后，表单就会被提交到form标签的action属性中指定的那个页面去
+	* `reset`：重置按钮。清空当前表单的内容，并设置为最初的默认值
+	* `image`：图片按钮。和提交按钮的功能完全一致，只不过图片按钮可以显示图片
+	* `file`：文件选择框。如果要限制上传文件的类型，需要js配合完成。对上传的文件进行安全检查：一是扩展名的检查，二是文件数据内容的检查
+* `value="内容"`:文本框中的默认内容（已经被填好了的）
+* `size="50"`：文本框内可以显示50个字符。一个英文、一个中文都算一个字符。**size属性值的单位是字符不是像素**
+* `readonly`:文本框只读不能编辑。google浏览器，光标点不进去；IE浏览器光标可以点进去，但是文字不能编辑
+* `disabled`：文本框只读不能编辑。光标点不进去，属性值可以不写
+#### `<select>`下拉列表标签
+`<select>`标签里面的每一项用`<option>`表示。select就是“选择”，option就是“选项”。select标签和ul、ol、dl一样，都是组标签
+* `<select>`标签的属性
+	* `multiple`：对下拉列表中的选项进行多选。可以写成`multiple=""`,也可以写成`multiple="multiple"`
+	* `size="3"`:如果属性值大于1，则列表为滚动视图。默认属性值为1，即下拉视图
+* `<option> `标签的属性
+	* `selected`：预选中。没有属性值。
+#### `<textarea>`标签：多行文本输入框
+text就是“文本”，area就是“区域”
+**属性**
+* `rows="4"`：指定文本区域的行数
+* `cols="20"`：指定文本区域的列数
+* `readonly`：只读
+#### 表单的语义化
+`<form>
+        <fieldset>
+            <legend>账号信息</legend>
+            姓名：<input value="刘亦菲"><br/> 密码：
+            <input type="password" value="pwd" size="50"><br/>
+        </fieldset>
+        <fieldset>
+            <legend>其他信息</legend>
+            性别：<input type="radio" name="gender" value="male" checked="">男
+            <input type="radio" name="gender" value="female">女<br/> 爱好：
+            <input type="checkbox" name="love" value="eat">吃饭
+            <input type="checkbox" name="love" value="sleep">睡觉
+            <input type="checkbox" name="love" value="study">学习
+        </fieldset>
+    </form>`
+效果图如下：
+![1](https://user-images.githubusercontent.com/66710812/168278178-3e72897a-d642-4e31-9a1f-ac19bfdb233f.jpg)
 ### 多媒体标签
 ### 滚动字幕标签`<marquee>`
