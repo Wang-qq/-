@@ -149,6 +149,41 @@ width和height，在HTML5中的单位是CSS像素，在HTML4中既可以是像�
 	* dd是描述dt的
 	* dt、dd都是容器级标签，想放什么都可以
 ### 表格标签`<table>`
+* 一个表格`<table>`是由每行`<tr>`组成的，每行是由每个单元格`<td>`组成的
+* `<table>`属性
+	* `<border>`：边框。像素为单位
+	* `<style="border-collapse:collapse;">`：单元格的线和表格的边框的线合并（表格的两边框合并为一条）
+	* `width`：宽度。像素为单位
+	* `height`：高度。像素为单位
+	* `boedercolor`：表格的边框颜色
+	* `align`：表格的水平对齐方式。属性值可以填：left right center。注意：这里不是设置表格里内容的对齐方式，如果想设置表格里内容的对齐方式，要对单元格标签`<td>`进行设置
+	* `cellpadding`：单元格内容到边的距离，像素为单位。，默认情况下，文字是紧挨着左边那条线的，即默认情况下的值为0.注意不是单元格内容到四条边的距离，而是到一条边的距离，默认是与左边那条线的距离。如果设置属性`dir="rtl"`，那就是内容到右边那条线的距离
+	* `cellspacing`：单元格和单元格之间的距离（外边距），像素为单位。默认情况下的值为0
+	* `bgcolor="#99cc66"`：表格的背景颜色
+	* `background="路径src/..."`：背景图片。背景图片的优先级大于背景颜色
+	* `bordercolorlight`：表格的上、左边框，以及单元格的右、下边框的颜色
+	* `bordercolordark`：表格的右、下边框，以及单元格的上、左边框的颜色。这两个属性的目的是为了设置3D效果
+	* `dir`：共有属性，单元格内容的排列方式（direction）。可以取值：`ltr`:从左到右（left to right，默认），`rtl`：从右到左（right to left）
+* `<tr>`行属性
+	* `dir`：共有属性，设置这一行单元格内容的排列方式。可以取值：
+		* ltr:从左到右
+		* rtl：从右到左
+	* `bgcolor`：设置这一行单元格的背景色。没有background属性，无法设置这一行的背景图片，如果非要设置，可以使用css来实现
+	* `height`：一行的高度
+	* `align="center"`：一行的内容水平居中显示，取值：left center right
+	* `valign="center"`：一行的内容垂直居中，取值：top middle bottom，默认就是居中的，我也不知道middle还是center是有用的
+* `<td>`单元格属性
+	* `align`：内容的横向对齐方式。属性值可以是：left center right。如果想让每个单元格的内容都居中，这个属性太麻烦，可以使用css来解决
+	* `valign`：内容的纵向对齐方式。属性值可以是：top middle bottom
+	* `width`：绝对值或者相对值（%）
+	* `height`：单元格的高度
+	* `bgcolor`：设置这个单元格的背景色
+	* `background`：设置这个单元格的背景图片
+* 单元格的合并
+	* `colspan`：横向合并。例如`colspan="2"`表示当前单元格在水平方向上要占据两个单元格的位置
+	* `rowspan`：纵向合并。例如`rowspan="2"`表示当前单元格在垂直方向上要占据两个单元格的位置
+* `<th>`：加粗的单元格
+相当于<td>+<b>,属性同<td>
 
 ### 框架标签及内嵌框架`<iframe>`
 ### 表单标签`<form>`
