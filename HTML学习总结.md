@@ -131,3 +131,26 @@ width和height，在HTML5中的单位是CSS像素，在HTML4中既可以是像�
 提示性文本，鼠标悬停时出现的文本。
 * align属性
 图片和周围文字的相对位置。属性取值可以是：bottom（默认）、center、top、left、right。默认情况下，文字在图片的底部。
+### 列表标签`<ul>、<ol>、<dl>`
+* 无序列表`<ul>`，无序列表中的每一项都是`<li>`
+	* ul:unordered list,"无序列表"的意思
+	* li:list item,"列表项"的意思
+	* li不能单独存在，必须包裹在ul里面，但是li里面什么都能放
+	* `type="属性值"`。属性值可以选：`disc`（实心圆点，默认），`square`（实心方点),`circle`（空心圆）
+	* 列表之间是可以嵌套的
+* 有序列表`<ol>`，里面的每一项都是`<li>`
+	* ol:ordered list
+	* `type="属性值"`。属性值可以是1（阿拉伯数字，默认）、a、A、i、I。结合start属性表示从几开始。
+* 定义列表`<dl>`
+	* dl:definition list，没有属性，dl的子元素只能是dt和dd。
+		* dt:definition title，列表的标题，这个标签是必须的
+		* dd:definition description，列表的列表项，如果不需要，可以不加
+	* dt、dd只能在dl里面，dl里面只能有dt、dd
+	* dd是描述dt的
+	* dt、dd都是容器级标签，想放什么都可以
+### 表格标签`<table>`
+
+### 框架标签及内嵌框架`<iframe>`
+### 表单标签`<form>`
+### 多媒体标签
+### 滚动字幕标签`<marquee>`
