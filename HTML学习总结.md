@@ -308,11 +308,7 @@ HTML5是新一代开发web富客户端应用程序整体解决方案。包括：
 * 混合式本地应用
 * 简单的游戏
 #### HTML5新增的内容
-<html>
-	<table style="margin-left:auto;margin-right:auto;">
-		<tr>
-			<td>
-			* HTML
+* HTML
 	* 标签
 		* 更语义化标签
 		* 应用程序标签
@@ -332,16 +328,7 @@ HTML5是新一代开发web富客户端应用程序整体解决方案。包括：
 		* 2D
 		* 3D(WebGL)
 	* SVG
-			</td>
-			<td>
-			
-			</td>
-			<td>
-			
-			</td>
-		</tr>
-	</table>
-</html>
+...region...
 * CSS
 	* New Selector
 	* Web Fonts
@@ -358,6 +345,7 @@ HTML5是新一代开发web富客户端应用程序整体解决方案。包括：
 	* Transitions
 	* Animations
 	* etc.
+...region...
 * JavaScript API
 	* 核心平台提升
 		* 新的选择器
