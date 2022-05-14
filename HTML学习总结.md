@@ -308,7 +308,6 @@ HTML5是新一代开发web富客户端应用程序整体解决方案。包括：
 * 混合式本地应用
 * 简单的游戏
 #### HTML5新增的内容
-region{第一行
 * HTML
 	* 标签
 		* 更语义化标签
@@ -329,7 +328,6 @@ region{第一行
 		* 2D
 		* 3D(WebGL)
 	* SVG
-...region...
 * CSS
 	* New Selector
 	* Web Fonts
@@ -346,7 +344,6 @@ region{第一行
 	* Transitions
 	* Animations
 	* etc.
-...region...
 * JavaScript API
 	* 核心平台提升
 		* 新的选择器
@@ -377,7 +374,6 @@ region{第一行
 		* WebSocket
 	* 多线程
 	* 桌面通知
-}region 最后一行
 #### HTML5新增语义化标签
 ##### 语义化的作用
 * 能够便于开发者阅读和写出更优雅的代码
@@ -536,3 +532,34 @@ H5可以直接在标签里添加自定义属性，但必须以`data-`开头。�
 </body>
 </html>
 ````
+#### 拖拽
+在H5中，我们可以通过为元素添加`draggable="true"`来设置此元素是否可以进行拖拽操作，其中图片、链接默认是开启拖拽的。
+* 拖拽元素
+举例如下：
+```
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 给box1添加拖拽的属性-->
+    <div class="box1" draggable="true"></div>
+</body>
+</html>
+```
+效果如下：<br/>
+https://user-images.githubusercontent.com/66710812/168435301-6588340d-2781-478c-88c5-f735b847ef46.mp4
+* 目标元素
+#### 历史
+#### 地理位置
+#### 全屏
