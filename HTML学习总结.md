@@ -534,31 +534,31 @@ H5可以直接在标签里添加自定义属性，但必须以`data-`开头。�
 ````
 #### 拖拽
 在H5中，我们可以通过为元素添加`draggable="true"`来设置此元素是否可以进行拖拽操作，其中图片、链接默认是开启拖拽的。
-* 拖拽元素
-举例如下：
-```
-<!DOCTYPE html>
-<html>
+* 拖拽元素<br/>
+	举例如下：
+	```
+	<!DOCTYPE html>
+	<html>
 
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-    <style>
-        .box1 {
-            width: 200px;
-            height: 200px;
-            background-color: red;
-        }
-    </style>
-</head>
-<body>
-    <!-- 给box1添加拖拽的属性-->
-    <div class="box1" draggable="true"></div>
-</body>
-</html>
-```
-效果如下：<br/>
-https://user-images.githubusercontent.com/66710812/168435301-6588340d-2781-478c-88c5-f735b847ef46.mp4
+	<head lang="en">
+    	<meta charset="UTF-8">
+    	<title></title>
+    	<style>
+        	.box1 {
+            	width: 200px;
+            	height: 200px;
+            	background-color: red;
+        	}
+    	</style>
+	</head>
+	<body>
+    	<!-- 给box1添加拖拽的属性-->
+    	<div class="box1" draggable="true"></div>
+	</body>
+	</html>
+	```
+	效果如下：<br/>
+	![QQ录屏20220514231948](https://user-images.githubusercontent.com/66710812/168435828-d5875a1e-e59c-4617-83f0-ab6580be926e.gif)
 * 目标元素
 #### 历史
 #### 地理位置
