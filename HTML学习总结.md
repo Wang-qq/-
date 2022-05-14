@@ -404,7 +404,7 @@ IE8及以下版本的浏览器不支持H5和CSS3。解决办法：引入html5shi
 * t:than 比
 * e:equal 等于
 * g:great 更大
-##### H5新增的表单类型
+#### H5新增的表单类型
 * `email`：只能输入email格式，自动带有验证功能
 * `tel`：手机号码
 * `url`：只能输入url格式
@@ -417,7 +417,7 @@ IE8及以下版本的浏览器不支持H5和CSS3。解决办法：引入html5shi
 * `datetime`：时间日期
 * `month`：月份
 * `week`：星期
-###### 表单元素（标签）
+##### 表单元素（标签）
 * `<datalist>`数据列表
 ````
 <input type="text" list="myData">
@@ -438,7 +438,7 @@ keygen元素是密钥对生成器(key-pair generator)。当提交表单时，会
 	* value:当前值
 	* max:最大值
 	* min:最小值
-###### 表单属性
+##### 表单属性
 * `placeholder`:占位符（提示文字）
 * `autofocus`自动获取焦点
 * `multiple`文件上传多选或多个邮箱地址
@@ -447,12 +447,12 @@ keygen元素是密钥对生成器(key-pair generator)。当提交表单时，会
 * `novalidate`关闭默认的验证功能（只能加给form）
 * `required`表示必填项
 * `pattern`自定义正则，验证表单
-###### 表单事件
+##### 表单事件
 * `oninput()`：用户输入内容时触发，可用于输入字数统计
 * `oninvalid()`：验证不通过时触发。比如，验证不通过，想弹出一段提示文字，就可以用到它
-##### H5新增的多媒体
+#### H5新增的多媒体
 在H5之前，网页上播放音频/视频的通用方法是flash，播放复杂。因此，H5提供了视频和音频的标签
-###### 音频
+##### 音频
 使用举例：
 ````
 <audio src="music/yinyue.mp3" autoplay controls></audio>
@@ -474,4 +474,61 @@ audio支持三种音频格式，可采取以下措施处理兼容性问题
     抱歉，你的浏览器暂不支持此音频格式
 </audio>
 ````
+##### 视频
+* 使用举例
+````
+<video src="video/movie.mp4" controls autoplay></video>
+````
+* 附加属性
+	* 具有音频的四条属性
+	* `width`设置播放窗口宽度
+	* `height`设置播放窗口高度
+* 兼容性写法
+````
+    <!--<video src="video/movie.mp4" controls  autoplay ></video>-->
+    <!--  行内块 display:inline-block -->
+    <video controls autoplay>
+        <source src="video/movie.mp4"/>
+        <source src="video/movie.ogg"/>
+        <source src="video/movie.webm"/>
+        抱歉，不支持此视频
+    </video>
+````
+#### DOM操作
+##### 获取元素
+* document.querySelector("selector"):通过CSS选择器获取符合条件的第一个元素
+* document.querySelectorAll("selector"):通过CSS选择器获取符合条件的所有元素，以类数组形式存在
+##### 类名操作
+* Node.classList.add("class")：添加class
+* Node.classList.remove("class"):移除class
+* Node.classList.toggle("class"):切换class，有则移除，无则添加
+* Node.classList.contains("class")：检测是否存在class
+##### 自定义属性
+H5可以直接在标签里添加自定义属性，但必须以`data-`开头。举例：
+````
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!-- 给标签添加自定义属性 必须以data-开头 -->
+<div class="box" title="盒子" data-my-name="smyhvae" data-content="我是一个div">div</div>
+<script>
+    var box = document.querySelector('.box');
 
+    //自定义的属性 需要通过 dateset[]方式来获取
+    console.log(box.dataset["content"]);  //打印结果：我是一个div
+    console.log(box.dataset["myName"]);    //打印结果：smyhvae
+
+    //设置自定义属性的值
+    var num = 100;
+    num.index = 10;
+    box.index = 100;
+    box.dataset["content"] = "aaaa";
+
+</script>
+</body>
+</html>
+````
