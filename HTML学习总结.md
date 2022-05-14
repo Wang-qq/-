@@ -252,7 +252,46 @@ text就是“文本”，area就是“区域”
         </fieldset>
 </form>
 ````
-效果图如下：
 ![1](https://user-images.githubusercontent.com/66710812/168278178-3e72897a-d642-4e31-9a1f-ac19bfdb233f.jpg)
+#### `<label>`标签
+````
+<input type="radio" name="sex" /> 男
+<input type="radio" name="sex" /> 女
+````
+对于上面这样的单选框，只有点击单选框的小圆圈才可以选中，点击“男”、“女”两个文字时是无法选中的，label标签可以把input和汉字包裹起来作为整体。做法如下：
+````
+<input type="radio" name="sex" id="nan" /> <label for="nan">男</label>
+<input type="radio" name="sex" id="nv"  /> <label for="nv">女</label>
+````
+上述代码中，让label标签的for属性值和input标签的id属性值相同，那么这个label和input就有绑定关系了，复选框也有label，任何表单元素都有label
 ### 多媒体标签
+#### `<bgsound>`标签：播放背景音乐
+**属性**
+* `src="音乐文件的路径"`
+* `loop="-1"`：属性值代表播放次数，-1代表循环播放
+#### `<embed>`标签：播放多媒体文件（音频、视频等）
+* 视频格式支持mp4、wav等，但不是所有视频格式都支持
+* 属性
+	* `src="多媒体文件的路径"`
+	* `loop="-1"`：属性值代表播放次数，-1代表循环播放
+	* `autostart="false"`：打开网页时，禁止自动播放。默认值是true
+	* `volume="100"`:设置默认的音量大小
+	* width:指falsh文件的宽度
+	* height：指flash文件的高度
+	* quality：指flash的播放质量，质量有高有低hight low
+	* pluginspage：如果指定的flash插件不存在，则从pluginspage指定的地方下载
+	* type：指定flash的文件格式类型
+	* wmode:指flash的背景是否可以透明，取值：transparent是透明的
+#### `<object>`标签：播放多媒体文件（音频、视频等）
+主要应用于IE浏览器，它是W3C规范
+* `classid`:指定flash插件的ID号，一般存在于注册表中
+* `codebase`：如果flash插件不存在，则从codebase指定的地址下载
+* `<param>`标签的主要作用：设置具体的详细参数
+**在网页中插入flash时，为了同时兼容多种浏览器，需要将`<object>`标签和`<embed>`标签一起使用，但使用的顺序是：`<object>`中嵌套`<embed>`标记**
 ### 滚动字幕标签`<marquee>`
+如果在这个标签里设置了内容，打开网页，内容就会像弹幕一样自动移动。包含属性如下所示：
+* `direction="right"`：移动的目标方向。属性值可以是：left（从右向左移动，默认值）、right（从左向右移动）、up（从下向上移动）、down（从上向下移动）
+* `behavior="slide"`:行为方式。属性值可以是：slide（只移动一次）、scroll（循环移动，默认值）、alternate（循环移动）。后两个都是循环移动，区别在于：假设在`direction="right"`的情况下，`behavior="scroll"`表示从左到右、从左到右、从左到右···`behavior="alternate"`表示从右到左、从右到左、从右到左···
+* `scrollamount="30"`：移动的速度
+* `loop="3"`：循环多少圈。负值表示无限循环
+* `scrolldelay="1000"`：移动一次休息多长时间。单位是毫秒。
