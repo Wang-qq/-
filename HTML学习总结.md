@@ -457,8 +457,8 @@ keygen元素是密钥对生成器(key-pair generator)。当提交表单时，会
 ````
 <audio src="music/yinyue.mp3" autoplay controls></audio>
 ````
-效果如下：
-![Snipaste_2022-05-14_22-13-48](https://user-images.githubusercontent.com/66710812/168429467-ebb62059-44fb-426c-b701-04000d056f4e.jpg)
+效果如下：<br/>
+![Snipaste_2022-05-14_22-13-48](https://user-images.githubusercontent.com/66710812/168429467-ebb62059-44fb-426c-b701-04000d056f4e.jpg)<br/>
 可以通过附加属性，来更友好的控制音频的播放。如：
 * `autoplay`自动播放。写成`autoplay`或者`autoplay=""`，都可以
 * `controls`控制条。（建议把这个选项写上，不然根本看不到控件在哪里）
