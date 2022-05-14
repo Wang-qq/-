@@ -308,7 +308,6 @@ HTML5是新一代开发web富客户端应用程序整体解决方案。包括：
 * 混合式本地应用
 * 简单的游戏
 #### HTML5新增的内容
-````
 <html>
 	<table style="margin-left:auto;margin-right:auto;">
 		<tr>
@@ -343,8 +342,6 @@ HTML5是新一代开发web富客户端应用程序整体解决方案。包括：
 		</tr>
 	</table>
 </html>
-````
-
 * CSS
 	* New Selector
 	* Web Fonts
