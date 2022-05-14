@@ -295,3 +295,183 @@ text就是“文本”，area就是“区域”
 * `scrollamount="30"`：移动的速度
 * `loop="3"`：循环多少圈。负值表示无限循环
 * `scrolldelay="1000"`：移动一次休息多长时间。单位是毫秒。
+### HTML5
+#### 什么是HTML5
+HTML5是新一代开发web富客户端应用程序整体解决方案。包括：HTML5,CSS3,Javascript API在内的一套技术组合<br/>
+**富客户端**：具有很强的**交互性**和体验的客户端程序。比如说，浏览博客，是比较简单的客户端；一个在线听歌的网站、即时聊天网站就是富客户端。
+#### HTML5的应用场景
+* 极具表现力的网页：内容简约而不简单
+* 网页应用程序
+	* 代替PC端的软件：iCloud、百度脑图、Office 365等
+	* APP端的网页：淘宝、京东、美团等
+	* 微信端：公众号、小程序等
+* 混合式本地应用
+* 简单的游戏
+#### HTML5新增的内容
+* HTML
+	* 标签
+		* 更语义化标签
+		* 应用程序标签
+	* 属性
+		* 链接关系描述
+		* 结构数据标记
+		* ARIA
+		* 自定义属性
+	* 智能表单
+		* 新增的表单类型
+		* 虚拟键盘适配
+	* 网页多媒体
+		* 音频
+		* 视频
+		* 字幕
+	* Canvas
+		* 2D
+		* 3D(WebGL)
+	* SVG
+* CSS
+	* New Selector
+	* Web Fonts
+	* Text Styles
+	* Opacity
+	* HSL Color
+	* Rounded Corners
+	* Gradients
+	* Shadows
+	* Background Enhancements
+	* Border Image
+	* Flexible Box Model
+	* Transforms
+	* Transitions
+	* Animations
+	* etc.
+* JavaScript API
+	* 核心平台提升
+		* 新的选择器
+		* Element.classList
+		* 访问历史API
+		* 全屏API
+	* 网页存储
+		* Application Cache
+		* localStorage
+		* sessionStorage
+		* webSQL
+		* IndexedDB
+	* 设备信息访问
+		* 网络状态
+		* 硬件访问
+		* 设备方向
+		* 地理围栏
+	* 拖放操作
+		* 网页内拖放
+		* 桌面拖放
+		* 桌面拖出
+	* 文件
+		* 文件系统API
+		* FileReader
+	* 网络访问
+		* XMLHttpRequest
+		* fetch
+		* WebSocket
+	* 多线程
+	* 桌面通知
+#### HTML5新增语义化标签
+##### 语义化的作用
+* 能够便于开发者阅读和写出更优雅的代码
+* 同时能够让浏览器或是网络爬虫可以很好的解析，从而更好分析其中的内容
+* 更好的搜索引擎优化
+##### H5中新增的语义化标签
+* `<section>`：表示区块
+* `<article>`：表示文章。如文章、评论、帖子、博客
+* `<header>`：表示页眉
+* `<footer>`：表示页脚
+* `<nav>`：表示导航
+* `<aside>`：表示侧边栏。如文章的侧栏
+* `<figure>`：表示媒介内容分组
+* `<mark>`：表示标记（用的少）
+* `<progress>`：表示进度（用的少）
+* `<time>`：表示日期
+###### 新语义化标签的兼容性处理
+IE8及以下版本的浏览器不支持H5和CSS3。解决办法：引入html5shiv.js文件。引入时，需要做if判断，具体代码如下：
+````
+<!-- 条件注释 只有ie能够识别-->
+
+<!-- [if lte ie 8]>
+	<script src="html5shiv.min.js"></script>
+<!--[endif]-->
+````
+上述代码是条件注释，但是ie浏览器可以识别出来。
+* l:less 更小
+* t:than 比
+* e:equal 等于
+* g:great 更大
+##### H5新增的表单类型
+* `email`：只能输入email格式，自动带有验证功能
+* `tel`：手机号码
+* `url`：只能输入url格式
+* `number`：只能输入数字
+* `search`：搜索框
+* `range`：滑动条
+* `color`：拾色器
+* `time`：时间
+* `date`：日期
+* `datetime`：时间日期
+* `month`：月份
+* `week`：星期
+###### 表单元素（标签）
+* `<datalist>`数据列表
+````
+<input type="text" list="myData">
+<datalist id="myData">
+    <option>本科</option>
+    <option>研究生</option>
+    <option>不明</option>
+</datalist>
+````
+上述代码将input中的list属性和datalist进行了绑定，数据列表可以自动提示。效果如下：
+![687474703a2f2f696d672e736d79687661652e636f6d2f32303138303230365f313834352e676966](https://user-images.githubusercontent.com/66710812/168418022-68ee0689-14f2-4ecc-89d4-620a32859c50.gif)
+* `<keygen>`元素
+keygen元素的作用是提供一种验证用户的可靠性算法。<br/>
+keygen元素是密钥对生成器(key-pair generator)。当提交表单时，会生成两个键：一个公钥，一个私钥。私钥(private key)存储与客户端，公钥(public key)则被发送到服务器。公钥可用于之后验证用户的客户端证书(client certificate)。
+* `<meter>`元素：度量器
+	* low:低于该值后警告
+	* high:高于该值后警告
+	* value:当前值
+	* max:最大值
+	* min:最小值
+###### 表单属性
+* `placeholder`:占位符（提示文字）
+* `autofocus`自动获取焦点
+* `multiple`文件上传多选或多个邮箱地址
+* `autocomplete`自动完成（填充的）。on开启（默认），off取消。用于表单元素，也用于表单自身
+* `form`指定表单项属于哪个form，处理复杂表单时会需要
+* `novalidate`关闭默认的验证功能（只能加给form）
+* `required`表示必填项
+* `pattern`自定义正则，验证表单
+###### 表单事件
+* `oninput()`：用户输入内容时触发，可用于输入字数统计
+* `oninvalid()`：验证不通过时触发。比如，验证不通过，想弹出一段提示文字，就可以用到它
+##### H5新增的多媒体
+在H5之前，网页上播放音频/视频的通用方法是flash，播放复杂。因此，H5提供了视频和音频的标签
+###### 音频
+使用举例：
+````
+<audio src="music/yinyue.mp3" autoplay controls></audio>
+````
+效果如下：
+![Snipaste_2022-05-14_22-13-48](https://user-images.githubusercontent.com/66710812/168429467-ebb62059-44fb-426c-b701-04000d056f4e.jpg)
+可以通过附加属性，来更友好的控制音频的播放。如：
+* `autoplay`自动播放。写成`autoplay`或者`autoplay=""`，都可以
+* `controls`控制条。（建议把这个选项写上，不然根本看不到控件在哪里）
+* `loop`循环播放
+* `preload`预加载。同时设置autoplay时，此属性失效
+audio支持三种音频格式，可采取以下措施处理兼容性问题
+````
+<!--推荐的兼容写法：-->
+<audio controls loop>
+    <source src="music/yinyue.mp3"/>
+    <source src="music/yinyue.ogg"/>
+    <source src="music/yinyue.wav"/>
+    抱歉，你的浏览器暂不支持此音频格式
+</audio>
+````
+
