@@ -861,25 +861,25 @@ H5中我们可以轻松的构建一个离线（无网络状态）应用，只需
 	* NETWORK：换行 指定需要在线访问的资源，可使用通配符
 	* FALLBACK：换行 当被缓存的文件找不到时的备用资源
 格式举例：
-```
-CACHE MANIFEST
+	```
+	CACHE MANIFEST
 
-#要缓存的文件
-CACHE:
-    images/img1.jpg
-    images/img2.jpg
-
-
-#指定必须联网才能访问的文件
-NETWORK:
-     images/img3.jpg
-     images/img4.jpg
+	#要缓存的文件
+	CACHE:
+    	images/img1.jpg
+    	images/img2.jpg
 
 
-#当前页面无法访问是回退的页面
-FALLBACK:
-    404.html
-```
+	#指定必须联网才能访问的文件
+	NETWORK:
+     	images/img3.jpg
+     	images/img4.jpg
+
+
+	#当前页面无法访问是回退的页面
+	FALLBACK:
+    	404.html
+	```
 * 缓存清单文件怎么用
 	* 首先我们创建一个名为`demo.appcache`的文件
 	```
