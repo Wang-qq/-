@@ -564,12 +564,95 @@ H5可以直接在标签里添加自定义属性，但必须以`data-`开头。�
 		* `ondragleave`：当**鼠标离开拖拽元素时**调用
 		* `ondragend`：当拖拽结束时调用
 		* `ondrag`：整个拖拽过程都会调用
-* 目标元素
-想把元素A拖拽到元素B里，那么元素B就是目标元素。页面中任何一个元素都可以成为目标元素。
+* 目标元素<br/>
+想把元素A拖拽到元素B里，那么元素B就是目标元素。页面中任何一个元素都可以成为目标元素。*如果想让拖拽元素在目标元素里做点事情，就必须在ondragover()里加event.preventDefault()这一行代码*
 	* 目标元素的事件监听
 		* `ondragenter`：当拖拽元素进入目标元素时调用
 		* `ondragover`：当拖拽元素停留在目标元素上时，就会连续一直触发（不管拖拽元素此时是移动还是不动的状态）
-		
+		* `ondrop`：当在目标元素上松开鼠标时调用
+		* `ondragleave`：当鼠标离开目标元素时调用
+	* 拖拽练习
+	```
+	<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .one {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+        }
+        
+        .two {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+            position: absolute;
+            left: 600px;
+            top: 200px;
+        }
+        
+        .one>div,
+        .two>div {
+            width: 98px;
+            height: 98px;
+            border: 1px solid #000;
+            border-radius: 50%;
+            background-color: red;
+            float: left;
+            text-align: center;
+            line-height: 98px;
+        }
+    </style>
+</head>
+<body>
+    <div class="one">
+        <div draggable="true">1</div>
+        <div draggable="true">2</div>
+        <div draggable="true">3</div>
+        <div draggable="true">4</div>
+        <div draggable="true">5</div>
+        <div draggable="true">6</div>
+        <div draggable="true">7</div>
+        <div draggable="true">8</div>
+    </div>
+    <div class="two"></div>
+</body>
+<script>
+    var boxs = document.querySelectorAll(".one div");
+    //临时的盒子，用于存放当前拖拽的元素
+    var two = document.querySelector(".two");
+    var temp = null;
+    //给8个小盒子分别绑定拖拽事件
+    for (var i = 0; i < boxs.length; i++) {
+        boxs[i].ondragstart = function() {
+            //保存当前拖拽的元素
+            temp = this;
+            console.log(temp);
+        }
+        boxs[i].ondragend = function() {
+            //当拖拽结束，清空temp
+            temp = null;
+            console.log(temp);
+        }
+    }
+    //目标元素的拖拽事件
+    two.ondragover = function(e) {
+            //阻止拖拽的默认行为
+            e.preventDefault();
+        }
+        //当在目标元素上松开鼠标时触发
+    two.ondrop = function() {
+        //将拖拽的元素追加到two上面来
+        this.appendChild(temp);
+    }
+</script>
+</html>
+	```
+效果如下：<br/>
+![687474703a2f2f696d672e736d79687661652e636f6d2f32303138303232345f323035302e676966](https://user-images.githubusercontent.com/66710812/168454427-19964b08-3911-407f-b842-52fbc67fda88.gif)
 #### 历史
 #### 地理位置
 #### 全屏
