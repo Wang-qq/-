@@ -768,3 +768,138 @@ H5规范允许用户自定义网页上*任一元素*全屏展示
 ```
 效果如下：（我自己代码运行不出这样的结果）<br/>
 ![687474703a2f2f696d672e736d79687661652e636f6d2f32303138303232345f323133302e676966](https://user-images.githubusercontent.com/66710812/168461167-856ae27d-063d-4fe7-ab92-8e3abd621433.gif)
+### Web存储
+为满足各种各样的需求，会经常性在本地存储大量的数据，传统方式以`document.cookie`来进行存储，但存储大小只有4kb左右。
+#### H5的两种存储方式
+* `window.sessionStorage`会话存储
+	* 保存在内存中
+	* 生命周期为关闭浏览器窗口。也就是说，当窗口关闭时数据销毁
+	* 在同一个窗口下数据可以共享
+* `window.localStorage`本地存储
+	* 有可能保存在浏览器内存中，也有可能保存在硬盘中
+	* 永久生效，除非手动删除（比如清理垃圾的时候）
+	* 可以多窗口共享
+#### Web存储的特性
+* 设置、读取方便
+* 容量较大，sessionStorage约5M、localStorage约20M
+* 只能存储字符串，可以将对象JSON。stringify()编码后存储
+#### 常用API
+* `setItem(key,value)`：设置存储内容。可以新增一个item，也可以更新一个item
+* `getItem(key)`：读取存储内容
+* `removeItem(key)`：根据建，删除存储内容
+* `clear()`：清空所有存储内容
+* `key(n)`:根据索引值来获取存储内容
+#### 记住用户名和密码案例：
+```
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <label for="">
+        用户名：<input type="text" class="userName" />
+    </label>
+    <br/><br/>
+    <label for="">
+        密码：<input type="password" class="pwd" />
+    </label>
+    <br/><br/>
+    <label for="">
+        <input type="checkbox" class="check" id=""/>记住密码
+    </label>
+    <br/><br/>
+    <button>登录</button>
+</body>
+<script>
+    var userName = document.querySelector('.userName');
+    var pwd = document.querySelector('.pwd');
+    var chk = document.querySelector('.check');
+    var btn = document.querySelector('.button');
+    //当点击登录时，如果勾选记住密码，就存储密码，否则就清楚密码
+    btn.onclick = function() {
+            if (chk.checked) {
+                //记住数据
+                window.localStorage.setItem('userName', userName.value);
+                window.localStorage.setItem('pwd', pwd.value);
+            } else {
+                //清除数据
+                window.localStorage.removeItem('userName');
+                window.localStorage.removeItem('pwd');
+            }
+        }
+        //下次登录时，如果记录的有数据，就直接填充
+    window.onload = function() {
+        userName.value = window.localStorage.getItem('userName');
+        pwd.value = window.localStorage.getItem('pwd');
+    }
+</script>
+
+</html>
+```
+#### 网络状态
+我们可以通过`window.online`来检测用户当前的网络状况，返回一个布尔值。
+* `window.online`:用户网络连接时被调用
+* `window.offline`:用户网络断开时被调用（拔掉网线或者禁用以太网）
+#### 应用缓存
+H5中我们可以轻松的构建一个离线（无网络状态）应用，只需要创建一个`cache manifest`缓存清单文件
+* 优势
+	* 可配置需要缓存的资源
+	* 网络无连接，应用仍可用
+	* 本地读取缓存资源，提升访问速度，增强用户体验
+	* 减少请求，缓解服务器负担
+* 缓存清单文件里的内容怎样写
+*缓存清单文件里列出了浏览器应缓存、以供离线访问的资源。推荐使用`.appcache`作为后缀名，另外还要添加MIME类型*
+	* 顶行写CACHE MANIFEST
+	* CACHE：换行 指定我们需要缓存的静态资源，如css/image/js等
+	* NETWORK：换行 指定需要在线访问的资源，可使用通配符
+	* FALLBACK：换行 当被缓存的文件找不到时的备用资源
+格式举例：
+```
+CACHE MANIFEST
+
+#要缓存的文件
+CACHE:
+    images/img1.jpg
+    images/img2.jpg
+
+
+#指定必须联网才能访问的文件
+NETWORK:
+     images/img3.jpg
+     images/img4.jpg
+
+
+#当前页面无法访问是回退的页面
+FALLBACK:
+    404.html
+```
+* 缓存清单文件怎么用
+	* 首先我们创建一个名为`demo.appcache`的文件
+	```
+	CACHE MANIFEST
+
+	# 注释以#开头
+	#下面是要缓存的文件
+	CACHE:
+    	http://img.smyhvae.com/2016040101.jpg
+	```
+	* 在需要应用缓存在页面的根元素html里，添加属性`manifest="demo.appcache"`。路径要保证正确，例如：
+	```
+	<!DOCTYPE html>
+	<html manifest="demo.appcache">
+	<head lang="en">
+    	<meta charset="UTF-8">
+    	<title></title>
+	</head>
+	<body>
+	<img src="http://img.smyhvae.com/2016040101.jpg" alt=""/>
+	</body>
+	</html>
+	```
