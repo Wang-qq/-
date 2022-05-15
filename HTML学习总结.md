@@ -678,12 +678,93 @@ H5可以直接在标签里添加自定义属性，但必须以`data-`开头。�
 |数据源|优点|缺点|
 |:---:|:---:|:---:|
 |IP地址|任何地方都可用在服务器端处理|不精确（经常出错，一般精确到城市级）<br/>运算代价大|
-|GPS|很精确|定位时间长，耗量大
+|GPS|很精确|定位时间长，耗量大<br/>室内效果差<br/>需要额外硬件设备支持|
+|Wi-Fi|精确<br/>可在室内使用<br/>简单、快捷|在乡村这些Wi-Fi接入点少的地区无法使用|
+|手机信号|相当准确<br/>可在室内使用<br/>简单、快捷|需要能够访问手机或其modem设备|
+|用户自定义|可获取比程序定位服务更准确的位置数据<br/>用户自行输入可能比自动检测要快|可能很不准确，特别是当用户位置变更后|
 
 ##### 隐私
+H5 Geolacation（地理位置定位）规范提供了一套保护用户隐私的机制。必须先得到用户的明确许可，才能获取用户的位置信息。
 ##### API详解
+* `navigator.getCurrentPosition(successCallback,errorCallback,options)`:获取当前地理信息
+* `navigator.watchPosition(successCallback,errorCallback,options)`:重复获取当前地理信息
+	* 成功获取当前地理信息后，会调用successCallback，并返回一个包含位置信息的对象position：（Coords即坐标）
+		* `position.coords.latitude`:纬度
+		* `position.coords.longitude`:经度
+	* 获取地理信息失败后，会调用errorCallback，并返回错误信息error
+	* 可选参数options对象可以调整位置信息数据收集方式
 #### 全屏
+H5规范允许用户自定义网页上*任一元素*全屏展示
 * 开启/关闭全屏显示
+	* `requestFullscreen()`:让元素开启全屏显示
+	* `cancleFullscreen()`：让元素关闭全屏显示
+	* 兼容性问题解决方法：添加私有前缀。<br/>
+	* ```
+	  webkitRequestFullScreen
+	  webkitCancleFullScreen
+
+	  mozRequestFullScreen
+	  mozCancleFullScreen
+	  ```
 * 检测当前是否处于全屏状态
+	* 方法如下：<br/>
+	  ```
+	  document.fullScreen
+	  ```
+	* 不同浏览器添加私有前缀：<br/>
+	  ```
+	  document.webkitIsFullScreen
+	  document.mozFullScreen
+	  ```
 * 全屏的伪类
+	* `:full-screen.box{}`
+	* `:-webkit-full-screen{}`
+	* `:moz-full-screen{}`
+当元素处于全屏状态时，改变它的样式，这时就可以用到伪类。
 * 代码举例
+```
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 250px;
+            height: 250px;
+            background-color: green;
+            margin: 100px auto;
+            border-radius: 50%;
+        }
+        /*全屏伪类：当元素处于全屏时，改变元素的背景色*/
+        
+        .box:-webkit-full-screen {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+<script>
+    var box = document.querySelector('.box');
+    // box.requestFullscreen();
+    //直接这样写是没有效果的，必须要点一下才可以实现全屏功能。无效的原因可能是浏览器的机制
+    document.querySelector('.box').onclick = function() {
+        // 开启全屏显示的兼容写法
+        if (box.requestFullscreen) { //如果支持全屏，那就让元素全屏
+            box.requestFullscreen();
+        } else if (box.webkitRequestFullScreen) {
+            box.webkitRequestFullScreen();
+        } else if (box.mozRequestFullScreen) {
+            box.mozRequestFullScreen();
+        }
+    }
+</script>
+
+</html>
+```
+效果如下：（我自己代码运行不出这样的结果）<br/>
+![687474703a2f2f696d672e736d79687661652e636f6d2f32303138303232345f323133302e676966](https://user-images.githubusercontent.com/66710812/168461167-856ae27d-063d-4fe7-ab92-8e3abd621433.gif)
